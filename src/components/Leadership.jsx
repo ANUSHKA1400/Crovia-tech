@@ -21,21 +21,21 @@ function Leadership() {
     navigate("/admin/login");
   };
 
-  // Featured Founder
-  const founder = {
-    image: riyaj,
-    name: "Er. Riyaj Mohammad",
-    role: "Founder & Director",
-    desc: "Leading Violet Spark Technologies with a vision to provide practical STEM education through AI, Robotics, IoT, Data Science and Engineering."
+  // Featured CEO
+  const ceo = {
+    image: Anurag,
+    name: "Er. Anurag Singh",
+    role: "Chief Executive Officer (CEO)",
+    desc: "As CEO of Violet Spark Technologies Pvt. Ltd., he is passionate about empowering the next generation through hands-on learning in AI, Robotics, Coding, IoT, and STEM. With expertise in Artificial Intelligence, Machine Learning, and Software Development, he is committed to bridging the gap between education and industry through innovation-driven learning."
   };
 
   // Leadership Team
   const leaders = [
     {
-      image: Anurag,
-      name: "Er. Anurag Singh",
-      role: "Chief Executive Officer (CEO)",
-      desc: "As CEO of Violet Spark Technologies Pvt. Ltd., he is passionate about empowering the next generation through hands-on learning in AI, Robotics, Coding, IoT, and STEM. With expertise in Artificial Intelligence, Machine Learning, and Software Development, he is committed to bridging the gap between education and industry through innovation-driven learning."
+      image: riyaj,
+      name: "Er. Riyaj Mohammad",
+      role: "Founder & Director",
+      desc: "Leading Violet Spark Technologies with a vision to provide practical STEM education through AI, Robotics, IoT, Data Science and Engineering."
     },
 
     {
@@ -88,7 +88,7 @@ function Leadership() {
 
         </div>
 
-        {/* Founder */}
+        {/* CEO */}
 
         <div className="row justify-content-center mb-5">
 
@@ -97,27 +97,27 @@ function Leadership() {
             <div className="card border-0 shadow h-100 text-center">
 
               <img
-                src={founder.image}
-                alt={founder.name}
+                src={ceo.image}
+                alt={ceo.name}
                 className="leader-image"
               />
 
               <div className="card-body">
 
                 <span className="badge bg-primary mb-3 fs-6">
-                  Founder & Director
+                  Chief Executive Officer
                 </span>
 
                 <h3 className="fw-bold">
-                  {founder.name}
+                  {ceo.name}
                 </h3>
 
                 <h5 className="text-primary mb-3">
-                  {founder.role}
+                  {ceo.role}
                 </h5>
 
                 <p className="text-muted">
-                  {founder.desc}
+                  {ceo.desc}
                 </p>
 
               </div>
