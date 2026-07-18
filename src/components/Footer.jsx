@@ -13,11 +13,15 @@ function Footer() {
         </p>
 
         <p className="mb-1">
-          📞 +91 7458 868 475
+          📞 +91 6306499799
+        </p>
+
+        <p className="mb-1">
+          📞 +91 8881088209
         </p>
 
         <p className="mb-3">
-          📍 India
+          📍 Gomti Nagar, Lucknow
         </p>
 
         <hr />
