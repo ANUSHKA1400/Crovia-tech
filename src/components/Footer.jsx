@@ -17,7 +17,7 @@ function Footer() {
         </p>
 
         <p className="mb-1">
-          📞 +91 8881088209
+          📞 +91 7458868475
         </p>
 
         <p className="mb-3">
