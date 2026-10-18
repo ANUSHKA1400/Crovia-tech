@@ -4,7 +4,7 @@ function WhyChooseUS() {
   const features = [
     {
       icon: <Award size={45} className="text-primary" />,
-      title: "200+ Projects",
+      title: "150+ Projects",
       desc: "Hands-on project-based learning with real-world applications."
     },
     {
@@ -31,7 +31,7 @@ function WhyChooseUS() {
         {/* Section Heading */}
         <div className="text-center mb-5">
           <h2 className="section-title">
-            Why Choose Violet Spark Technologies?
+            Why Choose Crovia Tech?
           </h2>
 
           <p className="section-subtitle">

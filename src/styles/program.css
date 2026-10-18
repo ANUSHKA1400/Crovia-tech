@@ -1,0 +1,406 @@
+/* ============================================
+   CROVIA AI PROJECTS PAGE
+   Green + White Theme — theme.css unchanged
+============================================ */
+
+.ai-projects-page {
+  --ai-bg: #F8F7F3;
+  --ai-bg-deep: #E8EED5;
+  --ai-panel: #FFFFFF;
+  --ai-blue: #174A78;
+  --ai-green: #78851F;
+  --ai-gold: #C49A32;
+  --ai-text: #202A33;
+  --ai-muted: #515D64;
+  --ai-border: rgba(120, 133, 31, 0.22);
+
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ai-text);
+  background: linear-gradient(
+    135deg,
+    #E5EBCF 0%,
+    #F8F7F3 42%,
+    #FFFFFF 75%,
+    #F0F3E5 100%
+  );
+  font-family: "Poppins", sans-serif;
+}
+
+.ai-projects-page *,
+.ai-projects-page *::before,
+.ai-projects-page *::after {
+  box-sizing: border-box;
+}
+
+/* ============================================
+   PAGE HEADER
+============================================ */
+
+.ai-projects-header {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 65px 24px 45px;
+  text-align: center;
+}
+
+.ai-projects-eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #78851F;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.ai-projects-header h1 {
+  margin: 0;
+  color: #202A33;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.ai-projects-header h1 span {
+  color: #78851F;
+}
+
+.ai-projects-header > p {
+  max-width: 650px;
+  margin: 15px auto 0;
+  color: #515D64;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* ============================================
+   PROJECT LIST
+============================================ */
+
+.ai-projects-list {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.ai-project-row {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1.05fr)
+    minmax(0, 1fr);
+  align-items: center;
+  gap: 32px;
+  padding: 35px 0 55px;
+  border-bottom: 1px solid var(--ai-border);
+}
+
+.ai-project-row + .ai-project-row {
+  margin-top: 28px;
+  padding-top: 40px;
+}
+
+/* ============================================
+   LEFT COLUMN — IMAGE
+============================================ */
+
+.ai-project-image-wrap {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--ai-border);
+  border-radius: 12px;
+  background: var(--ai-bg-deep);
+  box-shadow: 0 12px 30px rgba(32, 42, 51, 0.12);
+}
+
+.ai-project-image {
+  display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.ai-project-image-wrap:hover .ai-project-image {
+  transform: scale(1.035);
+}
+
+.ai-image-number {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  padding: 7px 11px;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  background: rgba(32, 42, 51, 0.85);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* ============================================
+   MIDDLE COLUMN — PROJECT INFORMATION
+============================================ */
+
+.ai-project-details {
+  min-width: 0;
+}
+
+.ai-project-label {
+  display: inline-block;
+  margin-bottom: 9px;
+  color: #68751B;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.ai-project-details h2 {
+  margin: 0 0 10px;
+  color: #202A33;
+  font-size: clamp(22px, 2.2vw, 29px);
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.ai-project-details h3 {
+  margin: 0 0 17px;
+  color: #174A78;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.ai-project-description {
+  margin: 0;
+  color: #515D64;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+/* Project feature list */
+
+.ai-project-features {
+  display: grid;
+  gap: 11px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ai-project-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #37434A;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.ai-check {
+  display: inline-flex;
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: var(--ai-green);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* ============================================
+   RIGHT COLUMN — VIDEO
+============================================ */
+
+.ai-project-video-wrap {
+  min-width: 0;
+}
+
+.ai-video-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 13px;
+  color: #68751B;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.ai-video-indicator {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: var(--ai-green);
+}
+
+.ai-project-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(23, 74, 120, 0.18);
+  border-radius: 10px;
+  background: #020914;
+  object-fit: contain;
+  box-shadow: 0 8px 24px rgba(32, 42, 51, 0.10);
+}
+
+.ai-project-video:focus-visible {
+  outline: 2px solid var(--ai-green);
+  outline-offset: 4px;
+}
+
+.ai-project-video-caption {
+  margin: 12px 0 0;
+  color: #515D64;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* ============================================
+   COPYRIGHT FOOTER — GREEN WITH WHITE TEXT
+============================================ */
+
+.ai-projects-footer {
+  margin-top: 0;
+  padding: 24px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: #78851F;
+  text-align: center;
+}
+
+.ai-projects-footer p {
+  margin: 0;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+/* ============================================
+   TABLET LAYOUT
+============================================ */
+
+@media (max-width: 1100px) {
+  .ai-projects-list {
+    padding: 0 28px;
+  }
+
+  .ai-project-row {
+    grid-template-columns:
+      minmax(0, 0.9fr)
+      minmax(0, 1.1fr);
+    gap: 28px;
+  }
+
+  .ai-project-image {
+    height: 300px;
+  }
+
+  .ai-project-video-wrap {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 700px;
+    margin: 5px auto 0;
+  }
+
+  .ai-project-video-caption {
+    margin-bottom: 0;
+  }
+}
+
+/* ============================================
+   MOBILE LAYOUT
+============================================ */
+
+@media (max-width: 650px) {
+  .ai-projects-header {
+    padding: 45px 20px 30px;
+  }
+
+  .ai-projects-header h1 {
+    font-size: 32px;
+  }
+
+  .ai-projects-header > p {
+    font-size: 13px;
+  }
+
+  .ai-projects-list {
+    padding: 0 20px;
+  }
+
+  .ai-project-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 25px;
+    padding: 25px 0 35px;
+  }
+
+  .ai-project-row + .ai-project-row {
+    margin-top: 20px;
+    padding-top: 35px;
+  }
+
+  .ai-project-image {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .ai-project-details h2 {
+    font-size: 25px;
+  }
+
+  .ai-project-details h3 {
+    font-size: 14px;
+  }
+
+  .ai-project-description {
+    font-size: 13px;
+  }
+
+  .ai-project-video-wrap {
+    grid-column: auto;
+    max-width: none;
+    margin: 0;
+  }
+
+  .ai-projects-footer {
+    padding: 20px 15px;
+  }
+}
+
+/* ============================================
+   SMALL MOBILE
+============================================ */
+
+@media (max-width: 380px) {
+  .ai-projects-list {
+    padding: 0 15px;
+  }
+
+  .ai-projects-header h1 {
+    font-size: 28px;
+  }
+
+  .ai-project-details h2 {
+    font-size: 22px;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION ACCESSIBILITY
+============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-project-image {
+    transition: none;
+  }
+}

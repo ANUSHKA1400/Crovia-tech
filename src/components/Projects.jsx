@@ -1,117 +1,228 @@
-import P2 from "../assets/images/P2.jpeg";
-import P3 from "../assets/images/P3.jpeg";
-import P4 from "../assets/images/P4.jpeg";
-import P5 from "../assets/images/P5.jpeg";
-import P6 from "../assets/images/P6.jpeg";
+import { useEffect, useRef, useState } from "react";
+
+import roboticsImage from "../assets/images/Robotics.jpg";
+import aiImage from "../assets/images/AI.jpg";
+import iotImage from "../assets/images/IoT1.jpg";
+import softwareImage from "../assets/images/Software.jpg";
+import dataScienceImage from "../assets/images/Data Science.jpg";
+import stemImage from "../assets/images/STEM.jpg";
+
+import roboticsVideo from "../assets/videos/Toy_robot_rolls_across.mp4";
+import aiVideo from "../assets/videos/Animate_forest_scene.mp4";
+import iotVideo from "../assets/videos/Robotic_vehicle_rolling.mp4";
+import softwareVideo from "../assets/videos/Drone_powering_on.mp4";
+import dataVideo from "../assets/videos/Self-balancing_robot.mp4";
+import stemVideo from "../assets/videos/Toy_drone_lifting_off.mp4";
 
 const projects = [
   {
     title: "Robotics",
     icon: "🤖",
-    image: P2,
-    desc: "Hands-on robotics projects using sensors, motors and controllers."
+    image: roboticsImage,
+    video: roboticsVideo,
+    desc: "Build hands-on robotics projects using sensors, motors, and controllers.",
   },
   {
     title: "Artificial Intelligence",
     icon: "🧠",
-    image: P3,
-    desc: "Build AI models and intelligent applications through practical learning."
+    image: aiImage,
+    video: aiVideo,
+    desc: "Explore AI concepts and intelligent applications through practical learning.",
   },
   {
     title: "Internet of Things",
     icon: "🌐",
-    image: P4,
-    desc: "Create smart devices with IoT sensors and cloud connectivity."
+    image: iotImage,
+    video: iotVideo,
+    desc: "Develop connected devices using sensors, electronics, and IoT technologies.",
   },
   {
     title: "Software Development",
     icon: "💻",
-    image: P6,
-    desc: "Design modern web and software applications using industry tools."
+    image: softwareImage,
+    video: softwareVideo,
+    desc: "Design and develop modern websites and software applications.",
   },
   {
     title: "Data Science",
     icon: "📊",
-    image: P5,
-    desc: "Analyze datasets, visualize insights and solve real-world problems."
-  },
-  {
-    title: "Data Analytics",
-    icon: "📈",
-    image: P6,
-    desc: "Learn business intelligence and data-driven decision making."
-  },
-  {
-    title: "Basic Electronics",
-    icon: "🔌",
-    image: P4,
-    desc: "Understand electronic circuits and hardware fundamentals."
+    image: dataScienceImage,
+    video: dataVideo,
+    desc: "Analyze datasets, visualize insights, and solve real-world problems.",
   },
   {
     title: "STEM Innovation",
     icon: "🚀",
-    image: P5,
-    desc: "Creative project-based STEM learning for future innovators."
-  }
+    image: stemImage,
+    video: stemVideo,
+    desc: "Turn creative ideas into practical projects through hands-on STEM learning.",
+  },
 ];
 
 function Projects() {
-  return (
-    <section id="projects" className="py-5 bg-light">
-      <div className="container">
+  const [activeProject, setActiveProject] = useState(null);
+  const videoRefs = useRef({});
 
-        <div className="text-center mb-5">
-          <h2 className="section-title">200+ Hands-on Projects</h2>
+  const showProjectVideo = (title) => {
+    setActiveProject(title);
+  };
+
+  const showProjectImage = (title) => {
+    const video = videoRefs.current[title];
+
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+
+    setActiveProject(null);
+  };
+
+  // Play the selected video after React renders it.
+  useEffect(() => {
+    if (!activeProject) return;
+
+    const video = videoRefs.current[activeProject];
+    if (!video) return;
+
+    video.muted = false;
+
+    video.play().catch(() => {
+      // The visitor can press Play if autoplay is blocked.
+    });
+  }, [activeProject]);
+
+  // Pause videos when this component unmounts.
+  useEffect(() => {
+    const videos = videoRefs.current;
+
+    return () => {
+      Object.values(videos).forEach((video) => {
+        if (video) {
+          video.pause();
+        }
+      });
+    };
+  }, []);
+
+  return (
+    <section id="projects" className="projects-section py-5">
+      <div className="container">
+        <div className="projects-heading text-center mb-5">
+          <span className="projects-eyebrow">
+            LEARN • CREATE • INNOVATE
+          </span>
+
+          <h2 className="section-title">150+ Hands-on Projects</h2>
 
           <p className="section-subtitle">
-            Students learn through real-world projects guided by experienced engineers.
+            From intelligent robots to connected devices, students turn
+            ideas into reality through practical learning guided by
+            experienced engineers.
           </p>
+
+          <div className="projects-heading-line" />
         </div>
 
         <div className="row g-4">
+          {projects.map((item) => {
+            const isPlaying = activeProject === item.title;
 
-          {projects.map((item, index) => (
+            return (
+              <div className="col-12 col-md-6 col-lg-4" key={item.title}>
+                <article
+                  className={`project-card ${
+                    isPlaying ? "project-card-playing" : ""
+                  }`}
+                >
+                  {isPlaying ? (
+                    <div className="project-media project-media-video">
+                      <video
+                        ref={(element) => {
+                          videoRefs.current[item.title] = element;
+                        }}
+                        src={item.video}
+                        className="project-video"
+                        controls
+                        autoPlay
+                        playsInline
+                        preload="metadata"
+                        aria-label={`${item.title} demonstration video`}
+                      >
+                        Your browser does not support video playback.
+                      </video>
 
-            <div className="col-lg-3 col-md-6" key={index}>
+                      <button
+                        type="button"
+                        className="project-back-control"
+                        onClick={() => showProjectImage(item.title)}
+                        aria-label={`Return to ${item.title} project image`}
+                      >
+                        <span aria-hidden="true">↩</span> Project details
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      className="project-image-trigger"
+                      onClick={() => showProjectVideo(item.title)}
+                      aria-label={`Play ${item.title} project video`}
+                    >
+                      <img
+                        src={item.image}
+                        alt={`${item.title} project`}
+                        className="project-card-image"
+                        loading="lazy"
+                      />
 
-              <div className="card h-100 shadow-sm">
+                      <span
+                        className="project-image-shade"
+                        aria-hidden="true"
+                      />
 
-                {item.image && (
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="card-img-top"
-                    style={{
-                      height: "220px",
-                      objectFit: "cover"
-                    }}
-                  />
-                )}
+                      <span className="project-play-icon" aria-hidden="true">
+                        <span>▶</span>
+                      </span>
 
-                <div className="card-body text-center">
+                      <span className="project-image-label">
+                        Explore project <span aria-hidden="true">↗</span>
+                      </span>
+                    </button>
+                  )}
 
-                  <div style={{ fontSize: "45px" }}>
-                    {item.icon}
+                  <div className="project-card-content">
+                    <div className="project-card-topline">
+                      <span className="project-icon" aria-hidden="true">
+                        {item.icon}
+                      </span>
+
+                      <span className="project-category-label">
+                        Technology Program
+                      </span>
+                    </div>
+
+                    <h3>{item.title}</h3>
+
+                    <p>{item.desc}</p>
+
+                    <div className="project-card-footer">
+                      <span className="project-learning-label">
+                        <span className="project-status-dot" />
+                        Hands-on learning
+                      </span>
+
+                      {!isPlaying && (
+                        <span className="project-open-hint">
+                          View demo <span aria-hidden="true">→</span>
+                        </span>
+                      )}
+                    </div>
                   </div>
-
-                  <h5 className="mt-3 fw-bold">
-                    {item.title}
-                  </h5>
-
-                  <p className="text-muted">
-                    {item.desc}
-                  </p>
-
-                </div>
-
+                </article>
               </div>
-
-            </div>
-
-          ))}
-
+            );
+          })}
         </div>
-
       </div>
     </section>
   );

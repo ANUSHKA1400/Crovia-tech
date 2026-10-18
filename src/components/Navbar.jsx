@@ -1,119 +1,142 @@
-import logo from "../assets/logo.png";
+/* eslint-disable react-hooks/set-state-in-effect */
+
+import { useEffect, useState } from "react";
+import logo from "../assets/logo.jpeg";
 
 function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
+
+  useEffect(() => {
+    setIsLoggedIn(Boolean(localStorage.getItem("croviaUser")));
+
+    if (localStorage.getItem("croviaLoginSuccess") === "true") {
+      localStorage.removeItem("croviaLoginSuccess");
+      setPopupMessage("You have successfully logged in!");
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("croviaUser");
+    localStorage.removeItem("croviaLoginSuccess");
+    setIsLoggedIn(false);
+    setPopupMessage("You have successfully logged out!");
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
-      <div className="container">
+    <>
+      <nav className="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top crovia-navbar">
+        <div className="container">
+          {/* Logo and company branding */}
+          <a className="navbar-brand" href="#home">
+            <img
+              src={logo}
+              alt="Crovia Logo"
+              width="65"
+              height="65"
+              className="crovia-logo"
+            />
 
-        {/* Logo */}
-        <a className="navbar-brand d-flex align-items-center" href="#home">
-          <img
-            src={logo}
-            alt="Violet Spark Logo"
-            width="65"
-            height="65"
-            className="me-3"
-          />
+            <div className="brand-text">
+              <span className="brand-name">CROVIA TECH</span>
+              <span className="brand-tagline">Pvt. Ltd.</span>
+            </div>
+          </a>
 
-          <div className="d-flex flex-column">
-            <span
-              className="fw-bold fs-4"
-              style={{ color: "#2A165D" }}
-            >
-              Violet Spark
-            </span>
+          {/* Mobile menu */}
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu"
+            aria-controls="menu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
 
-            <span
-              className="text-uppercase"
-              style={{
-                fontSize: "11px",
-                letterSpacing: "1px",
-                color: "#6c757d",
-              }}
-            >
-              Technologies Pvt. Ltd.
-            </span>
+          {/* Navigation */}
+          <div className="collapse navbar-collapse" id="menu">
+            <ul className="navbar-nav ms-auto align-items-lg-center">
+              {[
+                ["Home", "#home"],
+                ["About", "#about"],
+                ["Technologies", "#technology"],
+                ["Projects", "#projects"],
+                ["Partners", "#partners"],
+                ["Why Choose US", "#whychooseus"],
+              ].map(([label, href]) => (
+                <li className="nav-item" key={label}>
+                  <a className="nav-link" href={href}>
+                    {label}
+                  </a>
+                </li>
+              ))}
+
+              {/* Navbar Book Meeting button */}
+              <li className="nav-item nav-action">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSctD2_nIBmQvmfC97X-Ly1X2XIbfCRUUV4pNd3MA42tCcKP6g/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn crovia-meeting-btn"
+                >
+                  Book Meeting
+                </a>
+              </li>
+
+              {/* Sign In / Log Out */}
+              <li className="nav-item nav-action">
+                {isLoggedIn ? (
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="btn crovia-auth-btn"
+                  >
+                    Log Out
+                  </button>
+                ) : (
+                  <a href="/signin" className="btn crovia-auth-btn">
+                    Sign In
+                  </a>
+                )}
+              </li>
+            </ul>
           </div>
-        </a>
-
-        {/* Mobile Toggle */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#menu"
-          aria-controls="menu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        {/* Menu */}
-        <div className="collapse navbar-collapse" id="menu">
-
-          <ul className="navbar-nav ms-auto align-items-lg-center">
-
-            <li className="nav-item">
-              <a className="nav-link" href="#home">
-                Home
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="#about">
-                About
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="#technology">
-                Technologies
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="#projects">
-                Projects
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="#partners">
-                Partners
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="#whychooseus">
-                Why Choose US
-              </a>
-            </li>
-
-            <li className="nav-item">
-              <a className="nav-link" href="/admin/login">
-                Leadership
-              </a>
-            </li>
-
-            {/* Book Meeting Button */}
-            <li className="nav-item ms-lg-3">
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSctD2_nIBmQvmfC97X-Ly1X2XIbfCRUUV4pNd3MA42tCcKP6g/viewform"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-violet rounded-pill px-4 py-2"
-              >
-                Book Meeting
-              </a>
-            </li>
-
-          </ul>
-
         </div>
+      </nav>
 
-      </div>
-    </nav>
+      {/* Login / Logout popup */}
+      {popupMessage && (
+        <div
+          className="crovia-popup-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Login status"
+        >
+          <div className="crovia-popup bg-white shadow p-4 text-center">
+            <div className="crovia-popup-icon">✓</div>
+
+            <h4 className="fw-bold mt-2" style={{ color: "#102F4F" }}>
+              {popupMessage.includes("logged in")
+                ? "Login Successful!"
+                : "Logged Out"}
+            </h4>
+
+            <p className="text-muted">{popupMessage}</p>
+
+            <button
+              type="button"
+              className="btn crovia-meeting-btn"
+              onClick={() => setPopupMessage("")}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
