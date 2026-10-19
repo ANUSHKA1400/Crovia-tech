@@ -1,60 +1,46 @@
 import { useEffect, useRef, useState } from "react";
 
-import roboticsImage from "../assets/images/Robotics.jpg";
-import aiImage from "../assets/images/Gen AI.jpg";
-import iotImage from "../assets/images/IoT1.jpg";
-import softwareImage from "../assets/images/web.jpg";
-import dataScienceImg from "../assets/images/Data analysis.jpg";
-import stemImage from "../assets/images/STEM.jpg";
-
-import roboticsVideo from "../assets/videos/Toy_robot_rolls_across.mp4";
-import aiVideo from "../assets/videos/AI.mp4";
-import iotVideo from "../assets/videos/IoT1.mp4";
-import softwareVideo from "../assets/videos/web.mp4";
-import dataVideo from "../assets/videos/Data analysis.mp4";
-import stemVideo from "../assets/videos/Toy_drone_lifting_off.mp4";
-
 const projects = [
   {
     title: "Robotics",
     icon: "🤖",
-    image: roboticsImage,
-    video: roboticsVideo,
+    image: "/project-assets/Robotics/Robot.jpg",
+    video: "/project-assets/Robotics/Robot%20video.mp4",
     desc: "Build hands-on robotics projects using sensors, motors, and controllers.",
   },
   {
     title: "Artificial Intelligence",
     icon: "🧠",
-    image: aiImage,
-    video: aiVideo,
+    image: "/project-assets/AI/AI.jpg",
+    video: "/project-assets/AI/AI%20video.mp4",
     desc: "Explore AI concepts and intelligent applications through practical learning.",
   },
   {
     title: "Internet of Things",
     icon: "🌐",
-    image: iotImage,
-    video: iotVideo,
+    image: "/project-assets/IoT/IoT.jpg",
+    video: "/project-assets/IoT/IoT%20video.mp4",
     desc: "Develop connected devices using sensors, electronics, and IoT technologies.",
   },
   {
     title: "Software Development",
     icon: "💻",
-    image: softwareImage,
-    video: softwareVideo,
+    image: "/project-assets/Software/software.jpg",
+    video: "/project-assets/Software/software%20video.mp4",
     desc: "Design and develop modern websites and software applications.",
   },
   {
     title: "Data Science",
     icon: "📊",
-    image: dataScienceImg,
-    video: dataVideo,
+    image: "/project-assets/data%20science/data_science.jpg",
+    video: "/project-assets/data%20science/data_science.mp4",
     desc: "Analyze datasets, visualize insights, and solve real-world problems.",
   },
   {
     title: "STEM Innovation",
     icon: "🚀",
-    image: stemImage,
-    video: stemVideo,
+    image: "/project-assets/STEM/STEM.jpg",
+    video: "/project-assets/STEM/STEM%20video.mp4",
     desc: "Turn creative ideas into practical projects through hands-on STEM learning.",
   },
 ];
