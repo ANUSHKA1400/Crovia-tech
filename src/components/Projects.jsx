@@ -4,7 +4,7 @@ import roboticsImage from "../assets/images/Robotics.jpg";
 import aiImage from "../assets/images/ai.jpg";
 import iotImage from "../assets/images/IoT1.jpg";
 import softwareImage from "../assets/images/software.jpg";
-import dataScienceImage from "../assets/images/data science.jpg";
+import dataScienceImg from '../assets/images/data-science.jpg';
 import stemImage from "../assets/images/STEM.jpg";
 
 import roboticsVideo from "../assets/videos/Toy_robot_rolls_across.mp4";
@@ -46,7 +46,7 @@ const projects = [
   {
     title: "Data Science",
     icon: "📊",
-    image: dataScienceImage,
+    image: dataScienceImg,
     video: dataVideo,
     desc: "Analyze datasets, visualize insights, and solve real-world problems.",
   },
