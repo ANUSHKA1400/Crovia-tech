@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 
 import roboticsImage from "../assets/images/Robotics.jpg";
-import aiImage from "../assets/images/ai.jpg";
+import aiImage from "../assets/images/Gen AI.jpg";
 import iotImage from "../assets/images/IoT1.jpg";
-import softwareImage from "../assets/images/software.jpg";
-import dataScienceImg from '../assets/images/data-science.jpg';
+import softwareImage from "../assets/images/web.jpg";
+import dataScienceImg from "../assets/images/Data analysis.jpg";
 import stemImage from "../assets/images/STEM.jpg";
 
 import roboticsVideo from "../assets/videos/Toy_robot_rolls_across.mp4";
-import aiVideo from "../assets/videos/Animate_forest_scene.mp4";
-import iotVideo from "../assets/videos/Robotic_vehicle_rolling.mp4";
-import softwareVideo from "../assets/videos/Drone_powering_on.mp4";
-import dataVideo from "../assets/videos/Self-balancing_robot.mp4";
+import aiVideo from "../assets/videos/AI.mp4";
+import iotVideo from "../assets/videos/IoT1.mp4";
+import softwareVideo from "../assets/videos/web.mp4";
+import dataVideo from "../assets/videos/Data analysis.mp4";
 import stemVideo from "../assets/videos/Toy_drone_lifting_off.mp4";
 
 const projects = [
