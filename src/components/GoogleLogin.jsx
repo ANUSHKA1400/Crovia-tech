@@ -69,7 +69,7 @@ export default function GoogleLogin() {
         </h2>
 
         <p className="text-muted mb-4">
-          Sign in to Violet Spark Technologies
+          Sign in to CROVIA TECH
         </p>
 
         {error && (
