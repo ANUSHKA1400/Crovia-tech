@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
   "http://localhost:5173",
+  "https://crovia-frontend.onrender.com",
   process.env.FRONTEND_URL,
 ].filter(Boolean);
 
@@ -27,15 +28,18 @@ app.use(
         return callback(null, true);
       }
 
-      return callback(new Error("Origin not allowed by CORS"));
+      console.error("Blocked CORS origin:", origin);
+      return callback(null, false);
     },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-app.use(express.json());
+app.options(/.*/, cors());
 
-app.use(express.urlencoded({ extended: true }));
+
 
 // --------------------------------------------------
 // Test route
