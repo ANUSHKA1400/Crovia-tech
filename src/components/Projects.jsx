@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
 import roboticsImage from "../assets/images/Robotics.jpg";
-import aiImage from "../assets/images/AI.jpg";
+import aiImage from "../assets/images/ai.jpg";
 import iotImage from "../assets/images/IoT1.jpg";
-import softwareImage from "../assets/images/Software.jpg";
-import dataScienceImage from "../assets/images/Data Science.jpg";
+import softwareImage from "../assets/images/software.jpg";
+import dataScienceImage from "../assets/images/data science.jpg";
 import stemImage from "../assets/images/STEM.jpg";
 
 import roboticsVideo from "../assets/videos/Toy_robot_rolls_across.mp4";
