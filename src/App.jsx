@@ -25,8 +25,7 @@ import Footer from "./components/Footer";
 import GoogleLogin from "./components/GoogleLogin";
 
 const GOOGLE_CLIENT_ID =
-  "112048014603-jq659puhgv48ql0pukgm33ns7e8qnt1k.apps.googleusercontent.com";
-
+  "20869423899-dl1lek9rh16as2ifir2qdeqg37mamrsq.apps.googleusercontent.com";
 function HomePage() {
   return (
     <>
